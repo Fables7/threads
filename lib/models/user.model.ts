@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
       ref: "Thread",
     },
   ],
-  onBoarded: {
+  onboarded: {
     type: Boolean,
     default: false,
   },

@@ -6,7 +6,14 @@ import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "../ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { isBase64Image } from "@/lib/utils";
@@ -87,6 +94,12 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       image: values.profile_photo,
       path: pathname,
     });
+
+    if (pathname === "/profile/edit") {
+      router.back();
+    } else {
+      router.push("/");
+    }
   };
 
   return (
@@ -129,6 +142,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   onChange={(e) => handleImage(e, field.onChange)}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -147,6 +161,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -165,6 +180,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -183,6 +199,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
